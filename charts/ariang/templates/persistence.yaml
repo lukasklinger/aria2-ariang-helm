@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "ariang.fullname" . }}-config
+
+  labels:
+    {{- include "ariang.labels" . | nindent 4 }}
+    volume: config
+spec: {{ toYaml .Values.persistence.volumeClaimSpec | nindent 2 }}
